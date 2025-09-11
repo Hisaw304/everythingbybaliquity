@@ -51,7 +51,7 @@ export default function Contact() {
               <span className="contact-icon">✉️</span>
               <div>
                 <h4 className="contact-title">Email</h4>
-                <p className="contact-text">hello@sweetbakery.com</p>
+                <p className="contact-text">adamsbalikis57@gmail.com</p>
               </div>
             </div>
             <div className="contact-box">
