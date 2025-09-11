@@ -5,7 +5,7 @@ export default function FloatingActions({
   whatsapp = "2348108996071",
 }) {
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex gap-4">
+    <div className="fixed z-5 bottom-4 left-1/2 -translate-x-1/2 z-50 flex gap-4">
       {/* Call Button */}
       <a
         href={`tel:${phone}`}
