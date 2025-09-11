@@ -1,143 +1,118 @@
-// Contact.jsx
-import React from "react";
-import "../assets/style.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import L from "leaflet";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
-const cookieIcon = new L.DivIcon({
-  html: "🍪",
-  className: "cookie-marker",
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
-});
+export default function ContactForm() {
+  const formRef = useRef();
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState(null);
 
-export default function Contact() {
+  const validateForm = (data) => {
+    let newErrors = {};
+
+    if (!data.get("user_name")) {
+      newErrors.user_name = "Please enter your full name.";
+    }
+    if (!data.get("user_email")) {
+      newErrors.user_email = "Please enter your email.";
+    } else if (!/\S+@\S+\.\S+/.test(data.get("user_email"))) {
+      newErrors.user_email = "Please enter a valid email.";
+    }
+    if (!data.get("message")) {
+      newErrors.message = "Please write a message.";
+    }
+
+    return newErrors;
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setErrors({});
+    setStatus(null);
+
+    const data = new FormData(formRef.current);
+    const validationErrors = validateForm(data);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    emailjs
+      .sendForm(
+        "your_service_id",
+        "your_template_id",
+        formRef.current,
+        "your_public_key"
+      )
+      .then(
+        () => setStatus("success"),
+        () => setStatus("error")
+      );
+  };
+
   return (
-    <section className="bg-[#FFF9F5] py-16 px-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Heading */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#3A2525]">
-            Let’s Bake Something{" "}
-            <span className="inline-block">
-              <span className="together-pill">Together</span>
-            </span>
-          </h2>
-          <p className="mt-3 text-sm md:text-base text-[#6b4f47]">
-            Got a craving, a custom request, or just want to say hello? Reach
-            out — we’d love to hear from you.
-          </p>
-        </div>
-
-        {/* Two-column grid */}
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Left: Info + Map */}
-          <div className="space-y-6">
-            <div className="contact-box">
-              <span className="contact-icon">📍</span>
-              <div>
-                <h4 className="contact-title">Visit Us</h4>
-                <p className="contact-text">123 Sweet Street, Paris, France</p>
-              </div>
-            </div>
-            <div className="contact-box">
-              <span className="contact-icon">📞</span>
-              <div>
-                <h4 className="contact-title">Call Us</h4>
-                <p className="contact-text">+234 810 899-6071</p>
-              </div>
-            </div>
-            <div className="contact-box">
-              <span className="contact-icon">✉️</span>
-              <div>
-                <h4 className="contact-title">Email</h4>
-                <p className="contact-text">adamsbalikis57@gmail.com</p>
-              </div>
-            </div>
-            <div className="contact-box">
-              <span className="contact-icon">🕒</span>
-              <div>
-                <h4 className="contact-title">Hours</h4>
-                <p className="contact-text">Mon–Sat: 8am – 7pm</p>
-              </div>
-            </div>
-            <div className="flex gap-4 mt-6">
-              <a href="#" className="social-pill">
-                Instagram
-              </a>
-              <a href="#" className="social-pill">
-                Facebook
-              </a>
-            </div>
-
-            {/* Map Embed */}
-            <div className="map-container">
-              <MapContainer
-                center={[48.8566, 2.3522]} // Paris
-                zoom={14}
-                style={{ height: "250px", width: "100%" }}
-              >
-                <TileLayer
-                  attribution="&copy; OpenStreetMap contributors"
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={[48.8566, 2.3522]} icon={cookieIcon}>
-                  <Popup>
-                    🍪 Sweet Bakery <br /> 123 Sweet Street, Paris
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            </div>
-          </div>
-
-          {/* Right: Form */}
-          <form
-            id="contact"
-            className="bg-white rounded-2xl shadow-md p-6 md:p-8 space-y-5 contact-form"
-          >
-            <div className="flex flex-wrap gap-3">
-              <button type="button" className="quick-pill">
-                Order a Cake 🎂
-              </button>
-              <button type="button" className="quick-pill">
-                Book Catering 🥖
-              </button>
-              <button type="button" className="quick-pill">
-                Ask a Question ❓
-              </button>
-            </div>
-
-            <div>
-              <label className="form-label">Name</label>
-              <input
-                type="text"
-                className="form-input"
-                placeholder="Your full name"
-              />
-            </div>
-            <div>
-              <label className="form-label">Email</label>
-              <input
-                type="email"
-                className="form-input"
-                placeholder="you@example.com"
-              />
-            </div>
-            <div>
-              <label className="form-label">Message</label>
-              <textarea
-                rows="4"
-                className="form-input"
-                placeholder="Write your message..."
-              ></textarea>
-            </div>
-
-            <button type="submit" className="submit-btn">
-              Send Message
-            </button>
-          </form>
-        </div>
+    <form
+      ref={formRef}
+      onSubmit={sendEmail}
+      className="bg-white rounded-2xl shadow-md p-6 space-y-5"
+    >
+      {/* Name */}
+      <div>
+        <label className="form-label">Name</label>
+        <input
+          type="text"
+          name="user_name"
+          className={`form-input ${errors.user_name ? "border-red-500" : ""}`}
+          placeholder="e.g. Marie Curie"
+        />
+        {errors.user_name && (
+          <p className="mt-1 text-sm text-red-600">{errors.user_name}</p>
+        )}
       </div>
-    </section>
+
+      {/* Email */}
+      <div>
+        <label className="form-label">Email</label>
+        <input
+          type="email"
+          name="user_email"
+          className={`form-input ${errors.user_email ? "border-red-500" : ""}`}
+          placeholder="e.g. marie@example.com"
+        />
+        {errors.user_email && (
+          <p className="mt-1 text-sm text-red-600">{errors.user_email}</p>
+        )}
+      </div>
+
+      {/* Message */}
+      <div>
+        <label className="form-label">Message</label>
+        <textarea
+          rows="4"
+          name="message"
+          className={`form-input ${errors.message ? "border-red-500" : ""}`}
+          placeholder="Tell us what’s on your mind..."
+        ></textarea>
+        {errors.message && (
+          <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+        )}
+      </div>
+
+      <button type="submit" className="submit-btn">
+        Send Message
+      </button>
+
+      {/* Status */}
+      {status === "success" && (
+        <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
+          ✅ Sent successfully!
+        </div>
+      )}
+      {status === "error" && (
+        <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-lg">
+          ❌ Failed to send, please try again.
+        </div>
+      )}
+    </form>
   );
 }

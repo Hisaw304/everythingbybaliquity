@@ -16,7 +16,7 @@ export default function FloatingActions({
 
       {/* WhatsApp Button */}
       <a
-        href={`https://wa.me/${whatsapp}?text=Hi%20I%27m%20interested%20in%20your%20bakery%20🍰`}
+        href={`https://wa.me/${whatsapp}?text=Hey%20👋%20I%27d%20love%20to%20place%20an%20order%20from%20Everything%20By%20Baliquity%20🍪`}
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-full shadow-lg hover:bg-[#1da851] transition"
