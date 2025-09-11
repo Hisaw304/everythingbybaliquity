@@ -11,12 +11,14 @@ import Testimonials from "../components/Testimonials";
 import Contact from "../components/Contact";
 import Stats from "../components/Stats";
 import FloatingActions from "../components/FloatingActions";
+import TypedText from "../components/TypedText";
 
 const Home = () => {
   return (
     <div>
       <Hero />
       <Creations />
+      <TypedText />
       <Story />
       <Stats />
       <CraftedMenu />

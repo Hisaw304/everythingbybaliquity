@@ -44,7 +44,7 @@ export default function Contact() {
               <span className="contact-icon">📞</span>
               <div>
                 <h4 className="contact-title">Call Us</h4>
-                <p className="contact-text">+33 1 23 45 67 89</p>
+                <p className="contact-text">+234 810 899-6071</p>
               </div>
             </div>
             <div className="contact-box">

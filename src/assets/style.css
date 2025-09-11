@@ -921,3 +921,38 @@ section img.rounded-full {
 .faq-item {
   transition: max-height 0.3s ease;
 }
+/* Pill style for rotated highlights */
+.pill-rotate {
+  color: #3a2525;
+  font-weight: 700;
+  padding: 8px 14px;
+  /* border-radius: 999px; */
+  /* transform: rotate(-2deg) translateY(-2px); */
+  /* box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12); */
+  font-size: 0.95rem;
+  line-height: 1;
+  display: inline-block;
+  transform: rotate(-7deg); /* slight tilt */
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+  background-color: #fce9d2; /* soft beige */
+}
+
+/* Screen-reader helper (hidden visually) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduce animation for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .typed-text {
+    animation: none !important;
+  }
+}
