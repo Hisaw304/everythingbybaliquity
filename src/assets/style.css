@@ -869,7 +869,7 @@ body {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 20px rgba(91, 45, 45, 0.1);
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 /* Cookie marker tweak */
