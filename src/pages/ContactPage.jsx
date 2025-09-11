@@ -87,7 +87,7 @@ export default function ContactPage() {
         >
           Call Us Now
         </a>
-        <FloatingActions />
+        <FloatingActions phone="+2348108996071" whatsapp="2348108996071" />
       </section>
     </main>
   );

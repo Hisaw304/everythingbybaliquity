@@ -24,7 +24,7 @@ const Home = () => {
       <DealsSection />
       <Testimonials />
       <Contact />
-      <FloatingActions />
+      <FloatingActions phone="+2348108996071" whatsapp="2348108996071" />
     </div>
   );
 };

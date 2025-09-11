@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/style.css"; // your external CSS for custom tweaks
+import "../assets/style.css"; // external CSS for custom tweaks
 
 const Story = () => {
   return (
@@ -15,11 +15,14 @@ const Story = () => {
 
       {/* Body */}
       <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
-        Since our first loaf <span className="emoji">🍞</span> came out of the
-        oven, <span className="emoji">🍥</span> we’ve been dedicated to bringing
-        you fresh, wholesome, and delicious baked goods. Every recipe is made{" "}
-        <span className="emoji">🥖</span> from scratch using premium{" "}
-        <span className="emoji">🧈</span> ingredients and lots of love.
+        What started as a small kitchen dream has grown into a warm corner where
+        every <span className="emoji">🍞</span> loaf, every{" "}
+        <span className="emoji">🥐</span> pastry, and every{" "}
+        <span className="emoji">🍰</span> cake carries a story of care. At
+        <strong> Everything by Baliquity</strong>, we honor tradition while
+        embracing creativity — using time-tested recipes, wholesome{" "}
+        <span className="emoji">🧈</span> ingredients, and a touch of passion to
+        create baked goods that bring people together.
       </p>
     </section>
   );

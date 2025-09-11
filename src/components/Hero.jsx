@@ -6,7 +6,7 @@ export default function Hero({
   subText = "Fresh breads, flaky pastries, and decadent cakes — all handcrafted daily.",
   ctaLabel = "Order Now",
   contact = {
-    email: "info@bakeryfresh.com",
+    email: "adamsbalikis57@gmail.com",
     location: "123 Ocean Ave, Seattle",
   },
   heroSrc = "/images/hero.jpg",

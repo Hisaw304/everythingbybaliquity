@@ -115,7 +115,7 @@ export default function About() {
           Contact Us
         </a>
       </section>
-      <FloatingActions />
+      <FloatingActions phone="+2348108996071" whatsapp="2348108996071" />
     </main>
   );
 }
