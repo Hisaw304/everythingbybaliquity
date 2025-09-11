@@ -1,0 +1,922 @@
+/* styles.css — brand tokens & navbar styles */
+
+/* ===== Brand Colors ===== */
+:root {
+  --brown-900: #3b2a22;
+  --cream-50: #fdfcf8;
+  --peach-100: #ffe9dd;
+  --yellow-400: #facc15;
+  --yellow-300: #fde047;
+}
+
+/* ===== Typography ===== */
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--brown-900);
+  background-color: var(--cream-50);
+}
+
+.brand-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--white-900);
+}
+.brand-logo2 {
+  color: var(--yellow-400);
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background-color: var(--brown-900);
+  color: var(--cream-50);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-link {
+  color: var(--cream-50);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--yellow-400);
+}
+
+.icon-btn {
+  color: var(--cream-50);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.icon-btn:hover,
+.icon-btn:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Primary CTA */
+.btn-primary {
+  background-color: var(--yellow-400);
+  color: var(--brown-900);
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--yellow-300);
+  transform: translateY(-2px);
+}
+
+/* ===== Mobile Menu Overlay ===== */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--brown-900);
+  color: var(--cream-50);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 100;
+}
+
+/* Animation for menu slide down */
+@keyframes slide-down {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slide-down 0.4s ease forwards;
+}
+/* highlight used in the hero heading */
+.hero-highlight {
+  color: var(--yellow-400); /* or --brand-yellow depending on your tokens */
+  display: inline-block;
+}
+
+/* sticker helpers (soft drop + subtle rotate) */
+.sticker-topright {
+  transform-origin: center;
+  /* optional gentle spin */
+  animation: spin-slow 18s linear infinite;
+  opacity: 0.85;
+}
+
+/* bottom-left sticker larger and sits on wave */
+.sticker-bottomleft {
+  /* slight lifting effect */
+  transform: translateY(6%);
+}
+
+/* subtle spin keyframe (if not in your CSS already) */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* If you previously added the animate-float snippet, keep it.
+   If not, add this (floating cookie motion): */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .sticker-topright {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+/* --- Explore pill (matches screenshot) --- */
+.explore-pill {
+  display: inline-block;
+  transform: rotate(-7deg); /* slight tilt */
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+  background-color: #fce9d2;
+}
+
+/* --- Card background swatches that match the mockup --- */
+.card-bg-1 {
+  background-color: var(--peach-100);
+} /* soft peach */
+.card-bg-2 {
+  background-color: #fff6eb;
+} /* lighter peach/cream */
+.card-bg-3 {
+  background-color: #fff8e6;
+} /* pale yellow-ish */
+.card-bg-4 {
+  background-color: #fffaf6;
+} /* near-cream */
+
+/* make sure the card text contrasts */
+.card-bg-1 h3,
+.card-bg-2 h3,
+.card-bg-3 h3,
+.card-bg-4 h3 {
+  color: var(--brown-900);
+}
+
+/* --- Swiper arrow style (rounded, brown circle -> yellow on hover) --- */
+.creations-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background-color: var(--brown-900);
+  color: var(--cream-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(45, 34, 29, 0.08);
+  transition: transform 0.18s ease, background-color 0.18s ease;
+}
+/* Styling the pseudo content (arrow icons). Swiper will inject ::after by default;
+   since we're rendering our own buttons, supply an SVG or use a small chevron background. */
+.creations-nav::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* left arrow image (use data-URI or a small SVG file) */
+.creations-nav[aria-label="Previous items"]::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23FDFCF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'></polyline></svg>");
+}
+
+/* right arrow */
+.creations-nav[aria-label="Next items"]::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23FDFCF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'></polyline></svg>");
+}
+
+.creations-nav:hover {
+  transform: scale(1.05);
+  background-color: var(--yellow-300);
+  color: var(--brown-900);
+}
+
+/* Disabled state */
+.swiper-button-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Make sure swiper slides do not overflow on small screens */
+.creations-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+/* small helper: make the card image area visually centered */
+.creations-swiper img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Accessibility: focus outline for arrows */
+.creations-nav:focus {
+  outline: 3px solid rgba(255, 214, 77, 0.25);
+  outline-offset: 3px;
+}
+
+/* Custom baked tag style */
+.baked-tag {
+  display: inline-block;
+  transform: rotate(-7deg); /* slight tilt */
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
+  background-color: #fce9d2; /* soft beige */
+}
+
+/* Emoji spacing */
+.emoji {
+  display: inline-block;
+  margin: 0 2px;
+}
+/* Custom tilted "Moment" tag */
+.moment-tag {
+  transform: rotate(-7deg);
+}
+
+/* Cookie icon placeholder */
+.cookie-icon {
+  width: 80px;
+  height: 80px;
+  background-image: url("/images/sticker-cookie-bottomleft.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Explore button hover effect */
+.explore-btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.explore-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+}
+/* ==== CARD / HERO SHAPES ==== */
+.card-hero {
+  background: #3a2526; /* deep maroon/dark chocolate */
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(41, 23, 23, 0.24);
+  position: relative;
+  min-height: 460px; /* add vertical space */
+  padding: 40px; /* more breathing room */
+  display: flex; /* so children respect flex sizing */
+  flex-wrap: wrap;
+}
+
+/* image frame inside hero (white frame, rounded, subtle inset) */
+.img-frame {
+  width: 320px;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 6px; /* tiny white bezel */
+  /* background: linear-gradient(180deg, #fff, #fff); */
+  /* box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18); */
+}
+/* bigger frame for Passion section */
+.img-frame-large {
+  width: 500px; /* bigger image */
+  height: 340px;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 8px;
+  /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22); */
+  position: relative;
+  z-index: 5;
+}
+/* baker photo fills frame */
+.img-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* swirl sticker (top corners) — use your SVG/PNG */
+.swirl-icon {
+  width: 52px;
+  height: 52px;
+  background-image: url("/images/sticker-cookie-topright.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(0deg);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  /* white background behind swirl to match sticker look */
+  padding: 6px;
+}
+
+/* subtle leaf/ornament bottom-right of hero */
+.leaf-ornament {
+  width: 160px;
+  height: 120px;
+  background-image: url("/images/sticker-cookie-topright.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* BOOK button (yellow pill) */
+.book-btn span {
+  background: #ffd84d; /* warm yellow */
+  color: #3a2526;
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.book-btn:hover span {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
+}
+
+/* ==== DEALS CARDS ==== */
+.card-peach {
+  background: #fecdbe; /* peach card */
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(91, 45, 45, 0.12);
+  position: relative;
+  overflow: visible;
+}
+
+/* overlapping woman image - sits partly outside card */
+/* overlapping woman image - sits partly outside card */
+.woman-img {
+  position: absolute;
+  right: 20px; /* move to bottom-left instead of right */
+  bottom: -32px; /* push it further outside card */
+  height: 280px; /* bigger size */
+  z-index: 10;
+  object-fit: contain;
+  transform: translateZ(0);
+  /* box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18); */
+  border-radius: 16px;
+  background: transparent;
+}
+
+/* outline/ghost button on peach card */
+.btn-outline {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 2px solid rgba(58, 37, 38, 0.95);
+  background: transparent;
+  color: #3a2525;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.16s ease, background 0.12s ease;
+}
+.btn-outline:hover {
+  transform: translateY(-3px);
+  background: rgba(58, 37, 38, 0.06);
+}
+
+/* pale right card */
+.card-pale {
+  background: #fcd9a5;
+  border-radius: 22px;
+  box-shadow: 0 8px 20px rgba(91, 45, 45, 0.08);
+  position: relative;
+}
+
+/* small location pill top-right */
+.location-pill {
+  background: #3a2525;
+  color: #fff;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* faint pie ornament (background drawing on right card) */
+.pie-ornament {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 140px;
+  height: 120px;
+  background-image: url("/images/sticker-cookie-topright.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* tag chips */
+.tag {
+  display: inline-block;
+  background: #3a2525;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* small responsive tweaks */
+@media (max-width: 767px) {
+  .img-frame {
+    width: 260px;
+    height: 160px;
+  }
+  .woman-img {
+    height: 160px;
+    right: 8px;
+    bottom: -18px;
+  }
+  .card-hero {
+    padding: 20px;
+  }
+}
+/* --- Wave on TOP of the footer, facing UP --- */
+.wave-top {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 96px;
+  z-index: 40;
+  pointer-events: none;
+  transform: rotate(180deg); /* face upward */
+  display: block;
+}
+
+/* --- Footer core --- */
+.footer {
+  background-color: var(--brown-900);
+  color: var(--cream-50);
+  position: relative;
+  overflow: visible;
+}
+
+/* --- Decorative cupcake --- */
+.footer-decor {
+  pointer-events: none;
+  /* z-index: 50; */
+  filter: drop-shadow(0 14px 30px rgba(47, 22, 15, 0.22));
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem; /* default: centered above content */
+  width: 7.5rem; /* base size for mobile */
+  position: relative; /* avoids overlapping links */
+  top: auto;
+  left: auto;
+}
+
+/* Tablet (≥640px) */
+@media (min-width: 640px) {
+  .footer-decor {
+    width: 9rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Desktop (≥1024px) — overlap top-left */
+@media (min-width: 1024px) {
+  .footer-decor {
+    position: absolute;
+    left: 1.25rem;
+    top: -4.25rem;
+    width: 13rem;
+    margin: 0; /* reset centering */
+  }
+}
+
+/* --- Footer link hover/focus --- */
+.footer-link {
+  color: var(--cream-50);
+  transition: color 0.15s ease;
+  text-decoration: none;
+}
+.footer-link:hover,
+.footer-link:focus {
+  color: var(--brand-yellow);
+  outline: none;
+  text-decoration: underline;
+}
+
+/* --- Newsletter input/button --- */
+.footer-input {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.6rem 0.9rem;
+  border-radius: 9999px;
+  color: var(--cream-50);
+}
+.footer-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.footer-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 210, 77, 0.12);
+  border-color: var(--brand-yellow);
+}
+.footer-cta {
+  background: var(--brand-yellow);
+  color: var(--brown-900);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+/* --- Border strip --- */
+.footer .border-t {
+  border-color: rgba(87, 46, 36, 0.18);
+}
+/* ===========================
+   Testimonial section styles
+   =========================== */
+
+/* Clients pill in the heading (rotated like other tags) */
+.clients-pill {
+  display: inline-block;
+  background: #fce9d2; /* soft beige */
+  color: #3a2525; /* dark chocolate */
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transform: rotate(-2deg) translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* Testimonial card */
+.testimonial-card {
+  /* remove min-height to allow autoHeight to work */
+  overflow: visible;
+  position: relative;
+}
+
+/* client name pill that pops out from the card */
+.client-name-pill {
+  /* move inside card padding instead of absolute top -18px */
+  position: relative;
+  display: inline-block;
+  background: #3a2525;
+  color: white;
+  padding: 7px 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  transform: rotate(-2deg);
+  box-shadow: 0 10px 24px rgba(58, 37, 38, 0.18);
+  z-index: 10;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem; /* spacing from top content */
+}
+
+/* avatar initials circle */
+.avatar-initials {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffd76a, #ffb86c);
+  color: #3a2525;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  font-size: 0.9rem;
+}
+
+/* quote ornament - faint decorative quote or swirl in the bottom-right of a card */
+.quote-ornament {
+  width: 64px;
+  height: 40px;
+  background-image: url("/images/quote-ornament.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* card hover lift (combined Tailwind + CSS effect for precision) */
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(31, 18, 18, 0.18);
+}
+
+/* Pagination bullets (small and subtle) */
+.swiper-pagination-bullet {
+  background: #d9b89f;
+  opacity: 0.9;
+}
+.swiper-pagination-bullet-active {
+  background: #3a2525;
+}
+
+/* -------------------------
+   Custom Dark Chocolate arrows
+   ------------------------- */
+
+/* hide the default pseudo arrow so we can use our own */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+/* container for the arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #3a2525; /* dark chocolate */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(58, 37, 38, 0.22);
+  z-index: 30;
+  top: 50%;
+  transform: translateY(-50%);
+  /* leave default left/right positioning managed by Swiper */
+}
+
+/* add our SVG chevron as a pseudo element (white) */
+.swiper-button-next::before,
+.swiper-button-prev::before {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23ffffff' d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+  transform: none;
+}
+
+/* flip the chevron for prev */
+.swiper-button-prev::before {
+  transform: rotate(180deg);
+}
+
+/* position arrows a little outside the slider on wide screens */
+@media (min-width: 768px) {
+  .swiper-button-prev {
+    left: -20px;
+  }
+  .swiper-button-next {
+    right: -20px;
+  }
+}
+
+/* smaller screens keep arrows closer */
+@media (max-width: 767px) {
+  .swiper-button-prev {
+    left: 6px;
+  }
+  .swiper-button-next {
+    right: 6px;
+  }
+  .client-name-pill {
+    left: 12px;
+    top: -14px;
+  }
+}
+
+/* small accessibility focus style for arrows */
+.swiper-button-next:focus,
+.swiper-button-prev:focus {
+  outline: 3px solid rgba(255, 215, 101, 0.16);
+  outline-offset: 2px;
+}
+
+/* final micro-tweaks: make sure text colors match the brand */
+.testimonial-card p {
+  color: #6b4f4a;
+}
+.testimonial-card .avatar-initials {
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+}
+/* ===========================
+   Contact section styles
+   =========================== */
+
+/* Rotated pill for Together */
+.together-pill {
+  display: inline-block;
+  background: #fce9d2;
+  color: #3a2525;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transform: rotate(-2deg) translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* Contact info boxes */
+.contact-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #fecdbe;
+  padding: 16px 18px;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(91, 45, 45, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.contact-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(91, 45, 45, 0.15);
+}
+
+.contact-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+.contact-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #3a2525;
+}
+.contact-text {
+  font-size: 0.85rem;
+  color: #6b4f47;
+}
+
+/* Social pills */
+.social-pill {
+  background: #3a2525;
+  color: white;
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.social-pill:hover {
+  transform: translateY(-2px);
+  background: #2a1717;
+}
+
+/* Form */
+.contact-form {
+  overflow: hidden;
+}
+.form-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #3a2525;
+  margin-bottom: 4px;
+}
+.form-input {
+  width: 100%;
+  border: 1px solid #e5d4c7;
+  background: #fff9f5;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #3a2525;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+  border-color: #fecdbe;
+  box-shadow: 0 0 0 3px rgba(254, 205, 190, 0.4);
+  outline: none;
+}
+
+/* Quick message pills */
+.quick-pill {
+  background: #fce9d2;
+  color: #3a2525;
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transform: rotate(-2deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+.quick-pill:hover {
+  transform: rotate(-2deg) translateY(-3px);
+}
+
+/* Submit button */
+.submit-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #3a2525; /* dark chocolate */
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.submit-btn:hover {
+  transform: translateY(-3px);
+  background: #2a1717;
+}
+/* Map container */
+.map-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(91, 45, 45, 0.1);
+}
+
+/* Cookie marker tweak */
+.cookie-marker {
+  font-size: 24px;
+  line-height: 1;
+  text-align: center;
+}
+/* ===========================
+   Stats section styles
+   =========================== */
+
+.stat-card {
+  background: #fce9d2;
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 8px 20px rgba(91, 45, 45, 0.08);
+  transform: rotate(-1.5deg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat-card:hover {
+  transform: rotate(-1.5deg) translateY(-5px);
+  box-shadow: 0 12px 28px rgba(91, 45, 45, 0.15);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #3a2525;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-weight: 700;
+  color: #3a2525;
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.stat-tagline {
+  font-size: 0.9rem;
+  color: #6b4f47;
+}
+/* Owner's note styles */
+section img.rounded-full {
+  border: 4px solid #fce9d2;
+}
+/* Accordion smoothness */
+.faq-item {
+  transition: max-height 0.3s ease;
+}

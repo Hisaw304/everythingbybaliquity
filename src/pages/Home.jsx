@@ -1,0 +1,32 @@
+import React from "react";
+
+import Hero from "../components/Hero";
+
+import Creations from "../components/Creations";
+import Story from "../components/Story";
+import CraftedMenu from "../components/MenuSection";
+import PassionSection from "../components/PassionSection";
+import DealsSection from "../components/DealsSection";
+import Testimonials from "../components/Testimonials";
+import Contact from "../components/Contact";
+import Stats from "../components/Stats";
+import FloatingActions from "../components/FloatingActions";
+
+const Home = () => {
+  return (
+    <div>
+      <Hero />
+      <Creations />
+      <Story />
+      <Stats />
+      <CraftedMenu />
+      <PassionSection />
+      <DealsSection />
+      <Testimonials />
+      <Contact />
+      <FloatingActions />
+    </div>
+  );
+};
+
+export default Home;
