@@ -34,12 +34,19 @@ export default function Footer() {
     }
   }
 
+  const scrollToContact = (e) => {
+    e.preventDefault();
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer
       className="footer relative bg-brown-900 text-cream-50"
       role="contentinfo"
     >
-      {/* Wave placed ABOVE footer content, rotated so it faces UP and visually overlaps the top edge */}
+      {/* Wave placed ABOVE footer content */}
       <svg
         className="wave-top"
         viewBox="0 0 1440 80"
@@ -47,89 +54,71 @@ export default function Footer() {
         aria-hidden="true"
         focusable="false"
       >
-        {/* fill is cream so the wave appears as the cream area carving into the brown footer */}
         <path
           d="M0,40 C120,80 360,0 720,40 C1080,80 1320,0 1440,40 L1440 80 L0 80 Z"
           fill="var(--cream-50)"
         />
       </svg>
 
-      {/* main content container - add top padding so content sits below the wave */}
+      {/* main content */}
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-10 relative overflow-visible">
         <div className="lg:flex lg:items-start lg:gap-8">
-          {/* LEFT: decorative cupcake image (absolute positioned but visible on all breakpoints) */}
+          {/* LEFT: decorative cupcake image */}
           <div className="lg:flex-none lg:w-[260px] relative">
             <img
               src="/images/cupcake.png"
-              alt="" // decorative — left blank for screen readers
+              alt=""
               aria-hidden="true"
               className="footer-decor"
               loading="lazy"
             />
           </div>
 
-          {/* RIGHT: the two-column info area (stacked on small screens) */}
+          {/* RIGHT: links + newsletter */}
           <div className="flex-1">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* LEFT of right area: links + contact */}
+              {/* LEFT: nav links + contact */}
               <div>
-                <div className="flex flex-col md:flex-row md:gap-10">
-                  <div className="mb-6 md:mb-0">
-                    <h4 className="text-sm font-semibold mb-3 text-cream-50">
-                      Company
-                    </h4>
-                    <ul className="space-y-2">
-                      <li>
-                        <a className="footer-link" href="/about">
-                          About
-                        </a>
-                      </li>
-                      <li>
-                        <a className="footer-link" href="/careers">
-                          Careers
-                        </a>
-                      </li>
-                      <li>
-                        <a className="footer-link" href="/contact">
-                          Contact
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-semibold mb-3 text-cream-50">
-                      Menu
-                    </h4>
-                    <ul className="space-y-2">
-                      <li>
-                        <a className="footer-link" href="/menu">
-                          Our Menu
-                        </a>
-                      </li>
-                      <li>
-                        <a className="footer-link" href="/specials">
-                          Specials
-                        </a>
-                      </li>
-                      <li>
-                        <a className="footer-link" href="/catering">
-                          Catering
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                <h4 className="text-sm font-semibold mb-3 text-cream-50">
+                  Navigation
+                </h4>
+                <ul className="space-y-2">
+                  <li>
+                    <a className="footer-link" href="/">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a className="footer-link" href="/about">
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a className="footer-link" href="/contact">
+                      Contact
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="footer-link"
+                      href="#contact"
+                      onClick={scrollToContact}
+                    >
+                      Place an Order
+                    </a>
+                  </li>
+                </ul>
 
                 <div className="mt-6 text-sm text-cream-50 opacity-90">
                   <p className="mb-1">123 Baker Street, Sweet Town</p>
                   <p className="mb-1">Mon - Sat: 7:00 AM — 6:00 PM</p>
                   <a className="footer-link block mt-2" href="tel:+1234567890">
-                    +1 (234) 567-890
+                    +234 810 899-6071
                   </a>
                 </div>
               </div>
 
-              {/* RIGHT of right area: newsletter, socials, small links */}
+              {/* RIGHT: newsletter + socials */}
               <div>
                 <h4
                   id="newsletter-heading"
@@ -197,6 +186,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    {/* Instagram Icon */}
                     <svg
                       width="18"
                       height="18"
@@ -216,6 +206,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    {/* Facebook Icon */}
                     <svg
                       width="18"
                       height="18"
@@ -225,15 +216,6 @@ export default function Footer() {
                     >
                       <path d="M18 2h-3a4 4 0 00-4 4v3H8v3h3v8h3v-8h2.5l.5-3H14V6a1 1 0 011-1h3z" />
                     </svg>
-                  </a>
-                </div>
-
-                <div className="mt-6 text-xs text-brown-700 opacity-80">
-                  <a className="footer-link block" href="/help">
-                    Help Center
-                  </a>
-                  <a className="footer-link block mt-1" href="/shipping">
-                    Shipping & Returns
                   </a>
                 </div>
               </div>
