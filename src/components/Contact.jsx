@@ -63,9 +63,9 @@ export default function Contact() {
     setLoading(true);
 
     // Replace with your EmailJS values:
-    const SERVICE_ID = "your_service_id";
-    const TEMPLATE_ID = "your_template_id";
-    const PUBLIC_KEY = "your_public_key";
+    const SERVICE_ID = "service_9084tn1";
+    const TEMPLATE_ID = "template_4397woa";
+    const PUBLIC_KEY = "xXv64tI8S399kaC9P";
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formEl, PUBLIC_KEY).then(
       (response) => {
