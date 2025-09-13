@@ -116,13 +116,18 @@ export default function Hero({
         <div className="col-span-2 mt-6 lg:mt-0 lg:pl-6">
           <div className="max-w-xs text-sm md:text-base">
             <p className="text-cream-50 opacity-95">{subText}</p>
-            <button
-              onClick={scrollToContact}
-              className="inline-block mt-4 btn-primary"
-              aria-label={ctaLabel}
-            >
-              {ctaLabel}
-            </button>
+            {/* wrapper + glow element + CTA button (Tailwind + custom CSS) */}
+            <div className="btn-glow-wrap" aria-hidden={false}>
+              <span className="btn-glow" aria-hidden="true"></span>
+
+              <button
+                onClick={scrollToContact}
+                aria-label={ctaLabel}
+                className="relative z-10 inline-block mt-4 rounded-full px-6 py-3 font-semibold text-[#3a2526] bg-yellow-400 hover:bg-yellow-500 focus-visible:ring-0 focus:outline-none shadow-lg"
+              >
+                {ctaLabel}
+              </button>
+            </div>
           </div>
         </div>
       </div>

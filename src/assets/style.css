@@ -7,6 +7,10 @@
   --peach-100: #ffe9dd;
   --yellow-400: #facc15;
   --yellow-300: #fde047;
+  --glow-color: 255, 216, 77; /* warm bakery yellow (RGB) */
+  --glow-size: 260px;
+  --glow-blur: 36px;
+  --glow-opacity: 0.55;
 }
 
 /* ===== Typography ===== */
@@ -954,5 +958,82 @@ section img.rounded-full {
 @media (prefers-reduced-motion: reduce) {
   .typed-text {
     animation: none !important;
+  }
+}
+/* wrapper around button */
+.btn-glow-wrap {
+  position: relative; /* create local stacking context */
+  display: inline-block;
+  pointer-events: auto;
+}
+
+/* the glow element behind the button */
+.btn-glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--glow-size);
+  height: var(--glow-size);
+  transform: translate(-50%, -50%) scale(0.88);
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(var(--glow-color), 0.4) 0%,
+    rgba(var(--glow-color), 0.2) 30%,
+    rgba(var(--glow-color), 0.08) 55%,
+    transparent 100%
+  );
+  filter: blur(var(--glow-blur));
+  opacity: var(--glow-opacity);
+  z-index: 0; /* behind the button which will be z-index: 10 */
+  pointer-events: none; /* never capture pointer */
+  transition: transform 420ms cubic-bezier(0.2, 0.9, 0.3, 1), opacity 420ms ease;
+  will-change: transform, opacity;
+}
+
+/* subtle idle state (less intense) */
+.btn-glow-wrap .btn-glow {
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(0.88);
+}
+
+/* hover / focus: brighten and expand */
+.btn-glow-wrap:hover .btn-glow,
+.btn-glow-wrap:focus-within .btn-glow {
+  opacity: 0.95;
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+/* keep keyboard users happy — visible focus ring */
+.btn-glow-wrap :focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 208, 77, 0.18);
+  z-index: 20; /* keep focus ring above glow */
+}
+
+/* smaller glow on mobile so it doesn't overlay other UI */
+@media (max-width: 640px) {
+  :root {
+    --glow-size: 160px;
+    --glow-blur: 24px;
+    --glow-opacity: 0.55;
+  }
+  .btn-glow {
+    transition-duration: 300ms;
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-glow {
+    transition: none;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.65;
+    will-change: auto;
+  }
+  .btn-glow-wrap:hover .btn-glow,
+  .btn-glow-wrap:focus-within .btn-glow {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.75;
   }
 }
