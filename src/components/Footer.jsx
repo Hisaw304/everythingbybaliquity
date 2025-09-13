@@ -110,7 +110,7 @@ export default function Footer() {
                 </ul>
 
                 <div className="mt-6 text-sm text-cream-50 opacity-90">
-                  <p className="mb-1">123 Baker Street, Sweet Town</p>
+                  <p className="mb-1">123 Sweet Street, Ikeja, Lagos</p>
                   <p className="mb-1">Mon - Sat: 7:00 AM — 6:00 PM</p>
                   <a className="footer-link block mt-2" href="tel:+1234567890">
                     +234 810 899-6071

@@ -112,7 +112,7 @@ export default function Contact() {
               <span className="contact-icon">📍</span>
               <div>
                 <h4 className="contact-title">Visit Us</h4>
-                <p className="contact-text">123 Sweet Street, Paris, France</p>
+                <p className="contact-text">123 Sweet Street, Ikeja, Lagos</p>
               </div>
             </div>
 
