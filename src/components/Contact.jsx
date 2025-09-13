@@ -177,6 +177,7 @@ export default function Contact() {
             ref={formRef}
             onSubmit={sendEmail}
             className="bg-white rounded-2xl shadow-md p-6 md:p-8 space-y-5 contact-form relative"
+            id="contact"
           >
             {/* Quick pills - populate subject */}
             <div className="flex flex-wrap gap-3">
