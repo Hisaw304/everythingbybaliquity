@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../assets/style.css"; // your global brand CSS (btn-primary, variables, animate-float, etc.)
+import "../assets/style.css";
 
 export default function Hero({
   headline = 'Freshly <span class="hero-highlight">Baked</span> Goodness, Every Day',
@@ -9,13 +9,28 @@ export default function Hero({
     email: "adamsbalikis57@gmail.com",
     location: "123 Ocean Ave, Seattle",
   },
-  heroSrc = "/images/hero.jpg",
+  heroImages = [
+    "/images/hero.jpg",
+    "/images/hero2.jpg",
+    "/images/hero3.jpg",
+    "/images/hero4.jpg",
+    "/images/hero5.jpg",
+    "/images/hero6.jpg",
+    "/images/hero7.jpg",
+    "/images/hero8.jpg",
+    "/images/hero9.jpg",
+    "/images/hero10.jpg",
+    "/images/hero11.jpg",
+    "/images/hero12.jpg",
+  ], // multiple hero images
   imgWidth = 1200,
   imgHeight = 900,
   alt = "stacked chocolate cookies on a plate",
+  interval = 5000, // 5 seconds per image
 }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Detect prefers-reduced-motion
   useEffect(() => {
@@ -32,6 +47,17 @@ export default function Hero({
           : mq.removeListener(handler);
     }
   }, []);
+
+  // Rotate images
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setImgLoaded(false); // fade out
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+      }, 400); // allow fade-out before switching
+    }, interval);
+    return () => clearInterval(timer);
+  }, [heroImages.length, interval]);
 
   // Scroll to contact section
   const scrollToContact = () => {
@@ -96,7 +122,8 @@ export default function Hero({
               className="overflow-hidden"
             >
               <img
-                src={heroSrc}
+                key={currentIndex} // force re-render on change
+                src={heroImages[currentIndex]}
                 alt={alt}
                 width={imgWidth}
                 height={imgHeight}
@@ -116,10 +143,9 @@ export default function Hero({
         <div className="col-span-2 mt-6 lg:mt-0 lg:pl-6">
           <div className="max-w-xs text-sm md:text-base">
             <p className="text-cream-50 opacity-95">{subText}</p>
-            {/* wrapper + glow element + CTA button (Tailwind + custom CSS) */}
+            {/* wrapper + glow element + CTA button */}
             <div className="btn-glow-wrap" aria-hidden={false}>
               <span className="btn-glow" aria-hidden="true"></span>
-
               <button
                 onClick={scrollToContact}
                 aria-label={ctaLabel}
