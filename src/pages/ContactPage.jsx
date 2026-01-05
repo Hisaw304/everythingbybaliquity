@@ -25,68 +25,82 @@ export default function ContactPage() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <main className="bg-[#FFF9F5]">
-      {/* Hero Section */}
-      <section className="text-center py-20 px-6">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#3A2525] mb-4">
-          Get in <span className="together-pill">Touch</span>
-        </h1>
-        <p className="max-w-2xl mx-auto text-[#6b4f47] text-lg">
-          Whether you’re planning a celebration, need catering, or just want to
-          say hello — we’d love to hear from you.
-        </p>
+    <main className="bg-[#FFF9F5] w-full">
+      {/* Hero */}
+      <section className="py-24 px-6 text-center">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#3A2525] mb-6">
+            Get in <span className="together-pill">Touch</span>
+          </h1>
+          <p className="mx-auto max-w-4xl text-lg md:text-xl text-[#6b4f47] leading-relaxed">
+            Whether you’re planning a celebration, arranging catering, or simply
+            want to say hello, we’d love to hear from you and help bring your
+            ideas to life.
+          </p>
+        </div>
       </section>
 
-      {/* Contact Section */}
-      <Contact />
+      {/* Contact Form Section */}
+      <section className="w-full">
+        <Contact />
+      </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-6 max-w-4xl mx-auto">
-        <h2 className="text-center text-3xl font-bold text-[#3A2525] mb-10">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="bg-white border border-[#E5D4C7] rounded-lg shadow-md overflow-hidden"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex justify-between items-center px-6 py-4 text-left font-medium text-[#3A2525] focus:outline-none"
+      {/* FAQ */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-center text-3xl md:text-4xl font-bold text-[#3A2525] mb-12">
+            Frequently Asked Questions
+          </h2>
+
+          <div className="space-y-6 max-w-6xl mx-auto">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white border border-[#E5D4C7] rounded-xl shadow-md overflow-hidden"
               >
-                {faq.q}
-                <span
-                  className={`transform transition-transform ${
-                    openIndex === index ? "rotate-180" : "rotate-0"
-                  }`}
+                <button
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                  className="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-lg text-[#3A2525]"
                 >
-                  ▼
-                </span>
-              </button>
-              {openIndex === index && (
-                <div className="px-6 pb-4 text-[#6b4f47]">{faq.a}</div>
-              )}
-            </div>
-          ))}
+                  {faq.q}
+                  <span
+                    className={`transition-transform ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  >
+                    ▼
+                  </span>
+                </button>
+
+                {openIndex === index && (
+                  <div className="px-6 pb-6 text-lg md:text-xl text-[#6b4f47] leading-relaxed">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Closing CTA */}
-      <section className="py-20 px-6 text-center bg-[#FCE9D2]">
-        <h2 className="text-2xl md:text-3xl font-bold text-[#3A2525] mb-4">
-          Ready to Bake Something Special?
-        </h2>
-        <p className="text-[#6b4f47] mb-6 max-w-xl mx-auto">
-          Drop us a message or visit us in-store — let’s make your sweet ideas
-          come true.
-        </p>
-        <a
-          href="tel:+33123456789"
-          className="submit-btn inline-block px-6 py-3"
-        >
-          Call Us Now
-        </a>
+      <section className="py-24 px-6 text-center bg-[#FCE9D2]">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#3A2525] mb-6">
+            Ready to Bake Something Special?
+          </h2>
+          <p className="mx-auto max-w-3xl text-lg md:text-xl text-[#6b4f47] leading-relaxed mb-10">
+            Drop us a message, give us a call, or visit us in-store — let’s turn
+            your sweet ideas into something truly memorable.
+          </p>
+
+          <a href="tel:+2348108996071" className="submit-btn inline-block">
+            Call Us Now
+          </a>
+        </div>
+
         <FloatingActions phone="+2348108996071" whatsapp="2348108996071" />
       </section>
     </main>

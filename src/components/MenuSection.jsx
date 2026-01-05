@@ -10,7 +10,7 @@ const MenuSection = () => {
 
   return (
     <section className="bg-[#FFF9F5] py-16 px-6 flex justify-center">
-      <div className="bg-[#FECDBE] rounded-2xl shadow-lg p-8 max-w-5xl w-full relative">
+      <div className="bg-[#FECDBE] rounded-2xl shadow-lg p-8 max-w-6xl w-full relative">
         {/* Cookie graphic (top left) */}
         <div className="absolute -top-8 -left-4 cookie-icon"></div>
 

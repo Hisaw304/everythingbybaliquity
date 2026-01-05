@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Keyboard, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import "../assets/style.css"; // your global CSS (colors, .explore-pill, .creations-nav styles)
+import "../assets/style.css";
 
 import creations from "../data/creationsData";
 
@@ -17,24 +17,25 @@ export default function Creations() {
       className="relative bg-cream-50 py-16"
       aria-labelledby="creations-heading"
     >
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading row: pill + title on the left, short subtext on the right (lg+) */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
-          <div className="flex items-center gap-4">
-            <span className="explore-pill inline-block px-3 py-1 mx-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header (STACKED ALWAYS) */}
+        <div className="mb-10 text-center">
+          <div className="flex justify-center items-center gap-4 mb-4">
+            <span className="explore-pill inline-block px-3 py-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
               Explore
             </span>
             <h2
               id="creations-heading"
-              className="text-2xl md:text-3xl lg:text-3xl font-display font-bold text-brown-900"
+              className="text-3xl md:text-4xl font-display font-bold text-brown-900"
             >
               Our Delicious Creations
             </h2>
           </div>
 
-          <p className="max-w-xl text-sm md:text-base text-brown-800 opacity-90 lg:text-right">
+          <p className="mx-auto max-w-3xl text-lg md:text-xl text-brown-800 leading-relaxed opacity-90">
             Since our first loaf came out of the oven, we’ve been dedicated to
-            bringing you fresh, wholesome, and delicious baked goods.
+            bringing you fresh, wholesome, and delicious baked goods — crafted
+            with care and meant to be shared.
           </p>
         </div>
 
@@ -42,14 +43,14 @@ export default function Creations() {
         <div className="relative">
           <Swiper
             modules={[Navigation, Autoplay, Keyboard, A11y]}
+            loop
             spaceBetween={24}
-            loop={true}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
-            keyboard={{ enabled: true, onlyInViewport: true }}
+            keyboard={{ enabled: true }}
             breakpoints={{
               320: { slidesPerView: 1.2 },
               640: { slidesPerView: 2.1 },
@@ -57,23 +58,20 @@ export default function Creations() {
               1280: { slidesPerView: 4, spaceBetween: 28 },
             }}
             onInit={(swiper) => {
-              // attach navigation elements after init (Swipers needs DOM nodes)
               swiper.params.navigation.prevEl = prevRef.current;
               swiper.params.navigation.nextEl = nextRef.current;
               swiper.navigation.init();
               swiper.navigation.update();
             }}
-            aria-live="polite"
-            role="region"
             className="creations-swiper"
           >
             {creations.map((item, idx) => (
               <SwiperSlide key={idx}>
                 <a
                   href={item.link}
-                  className="block rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden bg-white"
+                  className="block rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
                 >
-                  {/* Image with fixed aspect ratio */}
+                  {/* Image – original tall feel */}
                   <div className="w-full aspect-w-4 aspect-h-3">
                     <img
                       src={item.image}
@@ -83,7 +81,7 @@ export default function Creations() {
                     />
                   </div>
 
-                  {/* Title below */}
+                  {/* Title */}
                   <div className="p-4 text-center">
                     <h3 className="text-lg font-semibold text-brown-900">
                       {item.title}
@@ -94,7 +92,7 @@ export default function Creations() {
             ))}
           </Swiper>
 
-          {/* Navigation arrows (absolute) */}
+          {/* Navigation arrows */}
           <button
             ref={prevRef}
             className="creations-nav absolute left-0 top-1/2 -translate-y-1/2 -ml-2 md:-ml-4 z-20"

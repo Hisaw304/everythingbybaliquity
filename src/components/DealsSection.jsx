@@ -4,7 +4,7 @@ import "../assets/style.css";
 const DealsSection = () => {
   return (
     <section className="bg-[#FFF9F5] py-16 px-6 flex justify-center">
-      <div className="relative max-w-5xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch deals-grid">
+      <div className="relative max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch deals-grid">
         {/* LEFT - peach card (2/3, taller) */}
         <div className="relative p-8 card-peach overflow-visible md:col-span-2 h-full min-h-[460px]">
           <div className="absolute -top-6 left-6 swirl-icon" aria-hidden />

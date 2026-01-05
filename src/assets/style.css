@@ -1,41 +1,57 @@
-/* styles.css — brand tokens & navbar styles */
+/* ======================================================
+   Brand Tokens
+====================================================== */
 
-/* ===== Brand Colors ===== */
 :root {
+  /* Core colors */
   --brown-900: #3b2a22;
   --cream-50: #fdfcf8;
   --peach-100: #ffe9dd;
+
+  /* Accent colors */
   --yellow-400: #facc15;
   --yellow-300: #fde047;
+
+  /* Glow system */
   --glow-color: 255, 216, 77; /* warm bakery yellow (RGB) */
   --glow-size: 260px;
   --glow-blur: 36px;
   --glow-opacity: 0.55;
 }
 
-/* ===== Typography ===== */
+/* ======================================================
+   Base / Typography
+====================================================== */
+
 body {
   font-family: "Inter", system-ui, sans-serif;
   color: var(--brown-900);
   background-color: var(--cream-50);
 }
 
+/* ======================================================
+   Brand / Logo
+====================================================== */
+
 .brand-logo {
   font-weight: 700;
   font-size: 1.25rem;
-  color: var(--white-900);
 }
+
 .brand-logo2 {
   color: var(--yellow-400);
 }
 
-/* ===== Navbar ===== */
+/* ======================================================
+   Navbar
+====================================================== */
+
 .navbar {
-  background-color: var(--brown-900);
-  color: var(--cream-50);
   position: sticky;
   top: 0;
   z-index: 2000;
+  background-color: var(--brown-900);
+  color: var(--cream-50);
 }
 
 .nav-link {
@@ -49,13 +65,14 @@ body {
   color: var(--yellow-400);
 }
 
+/* Icon buttons */
 .icon-btn {
-  color: var(--cream-50);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
   border-radius: 9999px;
+  color: var(--cream-50);
   transition: background-color 0.2s ease;
 }
 
@@ -64,15 +81,18 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Primary CTA */
+/* ======================================================
+   Buttons
+====================================================== */
+
 .btn-primary {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
   background-color: var(--yellow-400);
   color: var(--brown-900);
   font-weight: 600;
-  padding: 0.5rem 1.25rem;
-  border-radius: 9999px;
   transition: background-color 0.2s ease, transform 0.2s ease;
-  display: inline-block;
 }
 
 .btn-primary:hover,
@@ -81,24 +101,25 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== Mobile Menu Overlay ===== */
+/* ======================================================
+   Mobile Menu
+====================================================== */
+
 .mobile-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
+  z-index: 100;
   background-color: var(--brown-900);
   color: var(--cream-50);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  z-index: 100;
 }
 
-/* Animation for menu slide down */
+/* Slide animation */
 @keyframes slide-down {
   from {
     transform: translateY(-100%);
@@ -111,27 +132,39 @@ body {
 .animate-slide-down {
   animation: slide-down 0.4s ease forwards;
 }
-/* highlight used in the hero heading */
+
+/* ======================================================
+   Hero / Highlight Tags
+====================================================== */
+
 .hero-highlight {
-  color: var(--yellow-400); /* or --brand-yellow depending on your tokens */
+  color: var(--yellow-400);
   display: inline-block;
 }
 
-/* sticker helpers (soft drop + subtle rotate) */
-.sticker-topright {
-  transform-origin: center;
-  /* optional gentle spin */
-  animation: spin-slow 18s linear infinite;
-  opacity: 0.85;
+.baked-tag,
+.explore-pill,
+.moment-tag {
+  display: inline-block;
+  transform: rotate(-7deg);
+  background-color: #fce9d2;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* bottom-left sticker larger and sits on wave */
+/* ======================================================
+   Stickers & Motion
+====================================================== */
+
+.sticker-topright {
+  opacity: 0.85;
+  animation: spin-slow 18s linear infinite;
+  transform-origin: center;
+}
+
 .sticker-bottomleft {
-  /* slight lifting effect */
   transform: translateY(6%);
 }
 
-/* subtle spin keyframe (if not in your CSS already) */
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
@@ -141,8 +174,6 @@ body {
   }
 }
 
-/* If you previously added the animate-float snippet, keep it.
-   If not, add this (floating cookie motion): */
 @keyframes float {
   0% {
     transform: translateY(0);
@@ -154,10 +185,13 @@ body {
     transform: translateY(0);
   }
 }
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
   will-change: transform;
 }
+
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .sticker-topright {
@@ -165,29 +199,27 @@ body {
     transform: none !important;
   }
 }
-/* --- Explore pill (matches screenshot) --- */
-.explore-pill {
-  display: inline-block;
-  transform: rotate(-7deg); /* slight tilt */
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
-  background-color: #fce9d2;
-}
 
-/* --- Card background swatches that match the mockup --- */
+/* ======================================================
+   Card Backgrounds
+====================================================== */
+
 .card-bg-1 {
   background-color: var(--peach-100);
-} /* soft peach */
+}
+
 .card-bg-2 {
   background-color: #fff6eb;
-} /* lighter peach/cream */
+}
+
 .card-bg-3 {
   background-color: #fff8e6;
-} /* pale yellow-ish */
+}
+
 .card-bg-4 {
   background-color: #fffaf6;
-} /* near-cream */
+}
 
-/* make sure the card text contrasts */
 .card-bg-1 h3,
 .card-bg-2 h3,
 .card-bg-3 h3,
@@ -195,41 +227,37 @@ body {
   color: var(--brown-900);
 }
 
-/* --- Swiper arrow style (rounded, brown circle -> yellow on hover) --- */
+/* ======================================================
+   Swiper / Creations
+====================================================== */
+
+.creations-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.creations-swiper img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Navigation buttons */
 .creations-nav {
   width: 44px;
   height: 44px;
   border-radius: 9999px;
-  background-color: var(--brown-900);
-  color: var(--cream-50);
+  border: none;
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  cursor: pointer;
+
+  background-color: var(--brown-900);
+  color: var(--cream-50);
   box-shadow: 0 6px 18px rgba(45, 34, 29, 0.08);
+
   transition: transform 0.18s ease, background-color 0.18s ease;
-}
-/* Styling the pseudo content (arrow icons). Swiper will inject ::after by default;
-   since we're rendering our own buttons, supply an SVG or use a small chevron background. */
-.creations-nav::after {
-  content: "";
-  width: 12px;
-  height: 12px;
-  display: inline-block;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/* left arrow image (use data-URI or a small SVG file) */
-.creations-nav[aria-label="Previous items"]::after {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23FDFCF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'></polyline></svg>");
-}
-
-/* right arrow */
-.creations-nav[aria-label="Next items"]::after {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23FDFCF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'></polyline></svg>");
 }
 
 .creations-nav:hover {
@@ -238,58 +266,52 @@ body {
   color: var(--brown-900);
 }
 
-/* Disabled state */
+.creations-nav::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Left arrow */
+.creations-nav[aria-label="Previous items"]::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FDFCF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='15 18 9 12 15 6'/></svg>");
+}
+
+/* Right arrow */
+.creations-nav[aria-label="Next items"]::after {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FDFCF8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='9 18 15 12 9 6'/></svg>");
+}
+
+/* Disabled */
 .swiper-button-disabled {
   opacity: 0.35;
   pointer-events: none;
 }
 
-/* Make sure swiper slides do not overflow on small screens */
-.creations-swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-}
-
-/* small helper: make the card image area visually centered */
-.creations-swiper img {
-  -webkit-user-drag: none;
-  user-select: none;
-}
-
-/* Accessibility: focus outline for arrows */
+/* Focus ring */
 .creations-nav:focus {
   outline: 3px solid rgba(255, 214, 77, 0.25);
   outline-offset: 3px;
 }
 
-/* Custom baked tag style */
-.baked-tag {
-  display: inline-block;
-  transform: rotate(-7deg); /* slight tilt */
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
-  background-color: #fce9d2; /* soft beige */
-}
+/* ======================================================
+   Utilities
+====================================================== */
 
-/* Emoji spacing */
 .emoji {
   display: inline-block;
   margin: 0 2px;
 }
-/* Custom tilted "Moment" tag */
-.moment-tag {
-  transform: rotate(-7deg);
-}
 
-/* Cookie icon placeholder */
 .cookie-icon {
   width: 80px;
   height: 80px;
-  background-image: url("/images/sticker-cookie-bottomleft.png");
-  background-size: cover;
-  background-position: center;
+  background: url("/images/sticker-cookie-bottomleft.png") center / cover
+    no-repeat;
 }
 
-/* Explore button hover effect */
 .explore-btn {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -298,360 +320,346 @@ body {
   transform: translateY(-2px);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
 }
-/* ==== CARD / HERO SHAPES ==== */
+/* ======================================================
+   CARD / HERO SHAPES
+   ====================================================== */
+
 .card-hero {
-  background: #3a2526; /* deep maroon/dark chocolate */
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 460px;
+  padding: 40px;
+
+  background: #3a2526; /* deep chocolate */
   border-radius: 28px;
   box-shadow: 0 12px 30px rgba(41, 23, 23, 0.24);
-  position: relative;
-  min-height: 460px; /* add vertical space */
-  padding: 40px; /* more breathing room */
-  display: flex; /* so children respect flex sizing */
-  flex-wrap: wrap;
 }
 
-/* image frame inside hero (white frame, rounded, subtle inset) */
+/* ======================================================
+   IMAGE FRAMES
+   ====================================================== */
+
+.img-frame,
+.img-frame-large {
+  overflow: hidden;
+  background: #fff;
+}
+
 .img-frame {
   width: 320px;
   height: 200px;
+  padding: 6px;
   border-radius: 16px;
-  overflow: hidden;
-  padding: 6px; /* tiny white bezel */
-  /* background: linear-gradient(180deg, #fff, #fff); */
-  /* box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18); */
 }
-/* bigger frame for Passion section */
+
 .img-frame-large {
-  width: 500px; /* bigger image */
+  width: 500px;
   height: 340px;
-  border-radius: 20px;
-  overflow: hidden;
   padding: 8px;
-  /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22); */
+  border-radius: 20px;
   position: relative;
   z-index: 5;
 }
-/* baker photo fills frame */
-.img-frame img {
-  display: block;
+
+.img-frame img,
+.img-frame-large img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* swirl sticker (top corners) — use your SVG/PNG */
+/* ======================================================
+   STICKERS / ORNAMENTS
+   ====================================================== */
+
 .swirl-icon {
   width: 52px;
   height: 52px;
-  background-image: url("/images/sticker-cookie-topright.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  transform: rotate(0deg);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-  border-radius: 8px;
-  /* white background behind swirl to match sticker look */
   padding: 6px;
+  border-radius: 8px;
+
+  background: url("/images/sticker-cookie-topright.png") center / cover
+    no-repeat;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* subtle leaf/ornament bottom-right of hero */
+.leaf-ornament,
+.pie-ornament {
+  position: absolute;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.1;
+}
+
 .leaf-ornament {
   width: 160px;
   height: 120px;
-  background-image: url("/images/sticker-cookie-topright.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.12;
-  pointer-events: none;
 }
 
-/* BOOK button (yellow pill) */
+.pie-ornament {
+  right: 18px;
+  bottom: 18px;
+  width: 140px;
+  height: 120px;
+}
+
+/* ======================================================
+   BUTTONS
+   ====================================================== */
+
 .book-btn span {
-  background: #ffd84d; /* warm yellow */
-  color: #3a2526;
-  padding-left: 14px;
-  padding-right: 14px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  display: inline-block;
+  padding: 8px 14px;
   border-radius: 999px;
+
+  background: #ffd84d;
+  color: #3a2526;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
+
 .book-btn:hover span {
   transform: translateY(-3px);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.24);
 }
 
-/* ==== DEALS CARDS ==== */
-.card-peach {
-  background: #fecdbe; /* peach card */
-  border-radius: 22px;
-  box-shadow: 0 8px 24px rgba(91, 45, 45, 0.12);
-  position: relative;
-  overflow: visible;
-}
-
-/* overlapping woman image - sits partly outside card */
-/* overlapping woman image - sits partly outside card */
-.woman-img {
-  position: absolute;
-  right: 20px; /* move to bottom-left instead of right */
-  bottom: -32px; /* push it further outside card */
-  height: 280px; /* bigger size */
-  z-index: 10;
-  object-fit: contain;
-  transform: translateZ(0);
-  /* box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18); */
-  border-radius: 16px;
-  background: transparent;
-}
-
-/* outline/ghost button on peach card */
 .btn-outline {
   display: inline-block;
   padding: 8px 14px;
   border-radius: 999px;
-  border: 2px solid rgba(58, 37, 38, 0.95);
+
   background: transparent;
+  border: 2px solid rgba(58, 37, 38, 0.95);
   color: #3a2525;
   font-weight: 600;
-  cursor: pointer;
+
   transition: transform 0.16s ease, background 0.12s ease;
 }
+
 .btn-outline:hover {
   transform: translateY(-3px);
   background: rgba(58, 37, 38, 0.06);
 }
 
-/* pale right card */
-.card-pale {
-  background: #fcd9a5;
-  border-radius: 22px;
-  box-shadow: 0 8px 20px rgba(91, 45, 45, 0.08);
+/* ======================================================
+   DEAL / FEATURE CARDS
+   ====================================================== */
+
+.card-peach {
   position: relative;
+  border-radius: 22px;
+  background: #fecdbe;
+  box-shadow: 0 8px 24px rgba(91, 45, 45, 0.12);
 }
 
-/* small location pill top-right */
-.location-pill {
-  background: #3a2525;
-  color: #fff;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-weight: 600;
+.card-pale {
+  position: relative;
+  border-radius: 22px;
+  background: #fcd9a5;
+  box-shadow: 0 8px 20px rgba(91, 45, 45, 0.08);
 }
 
-/* faint pie ornament (background drawing on right card) */
-.pie-ornament {
+/* overlapping image */
+.woman-img {
   position: absolute;
-  right: 18px;
-  bottom: 18px;
-  width: 140px;
-  height: 120px;
-  background-image: url("/images/sticker-cookie-topright.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.08;
-  pointer-events: none;
+  right: 20px;
+  bottom: -32px;
+  height: 280px;
+  z-index: 10;
+
+  object-fit: contain;
+  border-radius: 16px;
 }
 
-/* tag chips */
+/* ======================================================
+   TAGS / PILLS
+   ====================================================== */
+
+.location-pill,
 .tag {
   display: inline-block;
-  background: #3a2525;
-  color: white;
   padding: 6px 12px;
-  font-size: 0.8rem;
   border-radius: 999px;
   font-weight: 600;
+  font-size: 0.8rem;
+
+  background: #3a2525;
+  color: #fff;
+}
+
+.tag {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* small responsive tweaks */
-@media (max-width: 767px) {
-  .img-frame {
-    width: 260px;
-    height: 160px;
-  }
-  .woman-img {
-    height: 160px;
-    right: 8px;
-    bottom: -18px;
-  }
-  .card-hero {
-    padding: 20px;
-  }
-}
-/* --- Wave on TOP of the footer, facing UP --- */
+/* ======================================================
+   FOOTER
+   ====================================================== */
+
 .wave-top {
   position: absolute;
   top: -1px;
   left: 0;
   width: 100%;
   height: 96px;
-  z-index: 40;
+  transform: rotate(180deg);
   pointer-events: none;
-  transform: rotate(180deg); /* face upward */
-  display: block;
 }
 
-/* --- Footer core --- */
 .footer {
-  background-color: var(--brown-900);
-  color: var(--cream-50);
   position: relative;
-  overflow: visible;
+  background: var(--brown-900);
+  color: var(--cream-50);
 }
 
-/* --- Decorative cupcake --- */
 .footer-decor {
-  pointer-events: none;
-  /* z-index: 50; */
-  filter: drop-shadow(0 14px 30px rgba(47, 22, 15, 0.22));
-  height: auto;
   display: block;
-  margin: 0 auto 1rem; /* default: centered above content */
-  width: 7.5rem; /* base size for mobile */
-  position: relative; /* avoids overlapping links */
-  top: auto;
-  left: auto;
+  width: 7.5rem;
+  margin: 0 auto 1rem;
+  filter: drop-shadow(0 14px 30px rgba(47, 22, 15, 0.22));
 }
 
-/* Tablet (≥640px) */
-@media (min-width: 640px) {
-  .footer-decor {
-    width: 9rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
-/* Desktop (≥1024px) — overlap top-left */
-@media (min-width: 1024px) {
-  .footer-decor {
-    position: absolute;
-    left: 1.25rem;
-    top: -4.25rem;
-    width: 13rem;
-    margin: 0; /* reset centering */
-  }
-}
-
-/* --- Footer link hover/focus --- */
 .footer-link {
   color: var(--cream-50);
-  transition: color 0.15s ease;
   text-decoration: none;
+  transition: color 0.15s ease;
 }
+
 .footer-link:hover,
 .footer-link:focus {
   color: var(--brand-yellow);
-  outline: none;
   text-decoration: underline;
 }
 
-/* --- Newsletter input/button --- */
 .footer-input {
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.6rem 0.9rem;
-  border-radius: 9999px;
   color: var(--cream-50);
 }
+
 .footer-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
+
 .footer-input:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 210, 77, 0.12);
   border-color: var(--brand-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 210, 77, 0.12);
 }
+
 .footer-cta {
   background: var(--brand-yellow);
   color: var(--brown-900);
   padding: 0.5rem 1rem;
-  border-radius: 9999px;
+  border-radius: 999px;
   font-weight: 700;
 }
 
-/* --- Border strip --- */
-.footer .border-t {
-  border-color: rgba(87, 46, 36, 0.18);
-}
-/* ===========================
-   Testimonial section styles
-   =========================== */
+/* ======================================================
+   TESTIMONIALS
+   ====================================================== */
 
-/* Clients pill in the heading (rotated like other tags) */
 .clients-pill {
   display: inline-block;
-  background: #fce9d2; /* soft beige */
-  color: #3a2525; /* dark chocolate */
-  font-weight: 700;
   padding: 8px 14px;
   border-radius: 999px;
-  transform: rotate(-2deg) translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  font-weight: 700;
   font-size: 0.95rem;
-  line-height: 1;
+
+  background: #fce9d2;
+  color: #3a2525;
+  transform: rotate(-2deg);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
-/* Testimonial card */
 .testimonial-card {
-  /* remove min-height to allow autoHeight to work */
-  overflow: visible;
   position: relative;
+  overflow: visible;
 }
 
-/* client name pill that pops out from the card */
 .client-name-pill {
-  /* move inside card padding instead of absolute top -18px */
-  position: relative;
   display: inline-block;
-  background: #3a2525;
-  color: white;
+  margin-bottom: 0.75rem;
   padding: 7px 12px;
+
+  background: #3a2525;
+  color: #fff;
+  font-size: 0.85rem;
   font-weight: 700;
   border-radius: 999px;
   transform: rotate(-2deg);
   box-shadow: 0 10px 24px rgba(58, 37, 38, 0.18);
-  z-index: 10;
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem; /* spacing from top content */
 }
 
-/* avatar initials circle */
 .avatar-initials {
   width: 44px;
   height: 44px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #ffd76a, #ffb86c);
-  color: #3a2525;
-  font-weight: 700;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+
+  background: linear-gradient(180deg, #ffd76a, #ffb86c);
+  color: #3a2525;
+  font-weight: 700;
   font-size: 0.9rem;
 }
 
-/* quote ornament - faint decorative quote or swirl in the bottom-right of a card */
 .quote-ornament {
   width: 64px;
   height: 40px;
-  background-image: url("/images/quote-ornament.png");
-  background-size: contain;
-  background-repeat: no-repeat;
   opacity: 0.08;
-  pointer-events: none;
+  background: url("/images/quote-ornament.png") center / contain no-repeat;
 }
 
-/* card hover lift (combined Tailwind + CSS effect for precision) */
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+
+@media (max-width: 767px) {
+  .card-hero {
+    padding: 20px;
+  }
+
+  .img-frame {
+    width: 260px;
+    height: 160px;
+  }
+
+  .woman-img {
+    height: 160px;
+    right: 8px;
+    bottom: -18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-decor {
+    position: absolute;
+    top: -4.25rem;
+    left: 1.25rem;
+    width: 13rem;
+    margin: 0;
+  }
+}
+
+/* ======================================================
+   TESTIMONIALS / SWIPER
+   ====================================================== */
+
+/* Card hover lift */
 .testimonial-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(31, 18, 18, 0.18);
 }
 
-/* Pagination bullets (small and subtle) */
+/* Pagination bullets */
 .swiper-pagination-bullet {
   background: #d9b89f;
   opacity: 0.9;
@@ -660,53 +668,53 @@ body {
   background: #3a2525;
 }
 
-/* -------------------------
-   Custom Dark Chocolate arrows
-   ------------------------- */
+/* ======================================================
+   SWIPER NAVIGATION (CUSTOM DARK CHOCOLATE)
+   ====================================================== */
 
-/* hide the default pseudo arrow so we can use our own */
+/* Remove default arrows */
 .swiper-button-next::after,
 .swiper-button-prev::after {
   display: none;
 }
 
-/* container for the arrows */
+/* Arrow containers */
 .swiper-button-next,
 .swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  z-index: 30;
+
   width: 44px;
   height: 44px;
   border-radius: 999px;
-  background: #3a2525; /* dark chocolate */
+
+  background: #3a2525;
+  box-shadow: 0 10px 24px rgba(58, 37, 38, 0.22);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 24px rgba(58, 37, 38, 0.22);
-  z-index: 30;
-  top: 50%;
+
   transform: translateY(-50%);
-  /* leave default left/right positioning managed by Swiper */
 }
 
-/* add our SVG chevron as a pseudo element (white) */
+/* Chevron icon */
 .swiper-button-next::before,
 .swiper-button-prev::before {
   content: "";
-  display: block;
   width: 14px;
   height: 14px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23ffffff' d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z'/></svg>");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 14px 14px;
-  transform: none;
+
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23ffffff' d='M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z'/></svg>")
+    center / 14px 14px no-repeat;
 }
 
-/* flip the chevron for prev */
 .swiper-button-prev::before {
   transform: rotate(180deg);
 }
 
-/* position arrows a little outside the slider on wide screens */
+/* Arrow positioning */
 @media (min-width: 768px) {
   .swiper-button-prev {
     left: -20px;
@@ -716,7 +724,6 @@ body {
   }
 }
 
-/* smaller screens keep arrows closer */
 @media (max-width: 767px) {
   .swiper-button-prev {
     left: 6px;
@@ -724,55 +731,57 @@ body {
   .swiper-button-next {
     right: 6px;
   }
-  .client-name-pill {
-    left: 12px;
-    top: -14px;
-  }
 }
 
-/* small accessibility focus style for arrows */
+/* Focus accessibility */
 .swiper-button-next:focus,
 .swiper-button-prev:focus {
   outline: 3px solid rgba(255, 215, 101, 0.16);
   outline-offset: 2px;
 }
 
-/* final micro-tweaks: make sure text colors match the brand */
+/* Text refinements */
 .testimonial-card p {
   color: #6b4f4a;
 }
 .testimonial-card .avatar-initials {
-  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+  font-family: "Poppins", system-ui, sans-serif;
 }
-/* ===========================
-   Contact section styles
-   =========================== */
 
-/* Rotated pill for Together */
+/* ======================================================
+   CONTACT SECTION
+   ====================================================== */
+
+/* Rotated highlight pill */
 .together-pill {
   display: inline-block;
-  background: #fce9d2;
-  color: #3a2525;
-  font-weight: 700;
   padding: 8px 14px;
   border-radius: 999px;
-  transform: rotate(-2deg) translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+
+  background: #fce9d2;
+  color: #3a2525;
+
+  font-weight: 700;
   font-size: 0.95rem;
   line-height: 1;
+
+  transform: rotate(-2deg) translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
-/* Contact info boxes */
+/* Contact info cards */
 .contact-box {
   display: flex;
-  align-items: flex-start;
   gap: 12px;
-  background: #fecdbe;
   padding: 16px 18px;
   border-radius: 16px;
+
+  background: #fecdbe;
   box-shadow: 0 6px 16px rgba(91, 45, 45, 0.08);
+
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .contact-box:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(91, 45, 45, 0.15);
@@ -782,11 +791,13 @@ body {
   font-size: 20px;
   line-height: 1;
 }
+
 .contact-title {
   font-weight: 700;
   font-size: 0.95rem;
   color: #3a2525;
 }
+
 .contact-text {
   font-size: 0.85rem;
   color: #6b4f47;
@@ -794,58 +805,74 @@ body {
 
 /* Social pills */
 .social-pill {
-  background: #3a2525;
-  color: white;
+  display: inline-block;
   padding: 7px 14px;
-  font-size: 0.8rem;
   border-radius: 999px;
+
+  background: #3a2525;
+  color: #fff;
+
+  font-size: 0.8rem;
   font-weight: 600;
+
   transition: transform 0.2s ease, background 0.2s ease;
 }
+
 .social-pill:hover {
   transform: translateY(-2px);
   background: #2a1717;
 }
 
-/* Form */
-.contact-form {
-  overflow: hidden;
-}
+/* ======================================================
+   FORMS
+   ====================================================== */
+
 .form-label {
   display: block;
+  margin-bottom: 4px;
+
   font-weight: 600;
   font-size: 0.85rem;
   color: #3a2525;
-  margin-bottom: 4px;
-}
-.form-input {
-  width: 100%;
-  border: 1px solid #e5d4c7;
-  background: #fff9f5;
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  color: #3a2525;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.form-input:focus {
-  border-color: #fecdbe;
-  box-shadow: 0 0 0 3px rgba(254, 205, 190, 0.4);
-  outline: none;
 }
 
-/* Quick message pills */
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+
+  background: #fff9f5;
+  border: 1px solid #e5d4c7;
+  color: #3a2525;
+  font-size: 0.9rem;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #fecdbe;
+  box-shadow: 0 0 0 3px rgba(254, 205, 190, 0.4);
+}
+
+/* Quick message pill */
 .quick-pill {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+
   background: #fce9d2;
   color: #3a2525;
-  padding: 7px 14px;
+
   font-size: 0.8rem;
-  border-radius: 999px;
   font-weight: 600;
+
   transform: rotate(-2deg);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+
   transition: transform 0.2s ease;
 }
+
 .quick-pill:hover {
   transform: rotate(-2deg) translateY(-3px);
 }
@@ -853,95 +880,118 @@ body {
 /* Submit button */
 .submit-btn {
   display: inline-block;
-  width: 100%;
-  padding: 12px 16px;
+  padding: 12px 24px;
   border-radius: 999px;
-  background: #3a2525; /* dark chocolate */
-  color: white;
+
+  background: #3a2525;
+  color: #fff;
+
   font-weight: 700;
   font-size: 0.95rem;
-  text-align: center;
   cursor: pointer;
+
   transition: transform 0.2s ease, background 0.2s ease;
 }
+
 .submit-btn:hover {
   transform: translateY(-3px);
   background: #2a1717;
 }
-/* Map container */
+
+/* ======================================================
+   MAP
+   ====================================================== */
+
 .map-container {
-  border-radius: 16px;
   overflow: hidden;
+  border-radius: 16px;
   box-shadow: 0 8px 20px rgba(91, 45, 45, 0.1);
-  /* z-index: 1; */
 }
 
-/* Cookie marker tweak */
 .cookie-marker {
   font-size: 24px;
   line-height: 1;
   text-align: center;
 }
-/* ===========================
-   Stats section styles
-   =========================== */
+
+/* ======================================================
+   STATS
+   ====================================================== */
 
 .stat-card {
-  background: #fce9d2;
-  border-radius: 16px;
   padding: 24px 20px;
+  border-radius: 16px;
+
+  background: #fce9d2;
   box-shadow: 0 8px 20px rgba(91, 45, 45, 0.08);
+
   transform: rotate(-1.5deg);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .stat-card:hover {
   transform: rotate(-1.5deg) translateY(-5px);
   box-shadow: 0 12px 28px rgba(91, 45, 45, 0.15);
 }
 
 .stat-number {
+  margin-bottom: 4px;
   font-size: 2.5rem;
   font-weight: 800;
   color: #3a2525;
-  margin-bottom: 4px;
 }
 
 .stat-label {
+  margin-bottom: 4px;
+  font-size: 1rem;
   font-weight: 700;
   color: #3a2525;
-  font-size: 1rem;
-  margin-bottom: 4px;
 }
 
 .stat-tagline {
   font-size: 0.9rem;
   color: #6b4f47;
 }
-/* Owner's note styles */
-section img.rounded-full {
+
+/* ======================================================
+   OWNER / MEDIA
+   ====================================================== */
+
+img.rounded-full {
   border: 4px solid #fce9d2;
 }
-/* Accordion smoothness */
+
+/* ======================================================
+   FAQ / ACCORDION
+   ====================================================== */
+
 .faq-item {
   transition: max-height 0.3s ease;
 }
-/* Pill style for rotated highlights */
+
+/* ======================================================
+   PILLS / HIGHLIGHTS
+   ====================================================== */
+
 .pill-rotate {
-  color: #3a2525;
-  font-weight: 700;
-  padding: 8px 14px;
-  /* border-radius: 999px; */
-  /* transform: rotate(-2deg) translateY(-2px); */
-  /* box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12); */
-  font-size: 0.95rem;
-  line-height: 1;
   display: inline-block;
-  transform: rotate(-7deg); /* slight tilt */
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: #fce9d2;
+  color: #3a2525;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+
+  transform: rotate(-7deg);
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.15);
-  background-color: #fce9d2; /* soft beige */
 }
 
-/* Screen-reader helper (hidden visually) */
+/* ======================================================
+   ACCESSIBILITY
+   ====================================================== */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -954,28 +1004,33 @@ section img.rounded-full {
   border: 0;
 }
 
-/* Reduce animation for accessibility */
 @media (prefers-reduced-motion: reduce) {
   .typed-text {
     animation: none !important;
   }
 }
-/* wrapper around button */
+
+/* ======================================================
+   GLOW BUTTON
+   ====================================================== */
+
 .btn-glow-wrap {
-  position: relative; /* create local stacking context */
+  position: relative;
   display: inline-block;
   pointer-events: auto;
 }
 
-/* the glow element behind the button */
+/* Glow element */
 .btn-glow {
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
+
   width: var(--glow-size);
   height: var(--glow-size);
-  transform: translate(-50%, -50%) scale(0.88);
   border-radius: 9999px;
+
+  transform: translate(-50%, -50%) scale(0.88);
   background: radial-gradient(
     circle at 50% 40%,
     rgba(var(--glow-color), 0.4) 0%,
@@ -983,47 +1038,52 @@ section img.rounded-full {
     rgba(var(--glow-color), 0.08) 55%,
     transparent 100%
   );
+
   filter: blur(var(--glow-blur));
   opacity: var(--glow-opacity);
-  z-index: 0; /* behind the button which will be z-index: 10 */
-  pointer-events: none; /* never capture pointer */
+  pointer-events: none;
+  z-index: 0;
+
   transition: transform 420ms cubic-bezier(0.2, 0.9, 0.3, 1), opacity 420ms ease;
   will-change: transform, opacity;
 }
 
-/* subtle idle state (less intense) */
+/* Idle state */
 .btn-glow-wrap .btn-glow {
   opacity: 0.5;
-  transform: translate(-50%, -50%) scale(0.88);
 }
 
-/* hover / focus: brighten and expand */
+/* Hover / focus */
 .btn-glow-wrap:hover .btn-glow,
 .btn-glow-wrap:focus-within .btn-glow {
   opacity: 0.95;
   transform: translate(-50%, -50%) scale(1.12);
 }
 
-/* keep keyboard users happy — visible focus ring */
+/* Keyboard focus */
 .btn-glow-wrap :focus-visible {
   outline: none;
   box-shadow: 0 0 0 4px rgba(255, 208, 77, 0.18);
-  z-index: 20; /* keep focus ring above glow */
+  z-index: 20;
 }
 
-/* smaller glow on mobile so it doesn't overlay other UI */
+/* ======================================================
+   RESPONSIVE GLOW
+   ====================================================== */
+
 @media (max-width: 640px) {
   :root {
     --glow-size: 160px;
     --glow-blur: 24px;
     --glow-opacity: 0.55;
   }
+
   .btn-glow {
     transition-duration: 300ms;
   }
 }
 
-/* Respect reduced motion */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .btn-glow {
     transition: none;
@@ -1031,9 +1091,10 @@ section img.rounded-full {
     opacity: 0.65;
     will-change: auto;
   }
+
   .btn-glow-wrap:hover .btn-glow,
   .btn-glow-wrap:focus-within .btn-glow {
-    transform: translate(-50%, -50%) scale(1);
     opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
