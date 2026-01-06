@@ -22,7 +22,7 @@ export default function TypedText({ speed = 80, backSpeed = 40, loop = true }) {
 
         <h2 className="text-center text-2xl md:text-3xl font-bold text-[#3A2525] mt-12">
           Or if you are{" "}
-          <span className="pill-rotate rounded-md">
+          <span className="explore-pill inline-block px-3 py-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
             <Typed
               strings={typedPhrases.events}
               typeSpeed={speed}

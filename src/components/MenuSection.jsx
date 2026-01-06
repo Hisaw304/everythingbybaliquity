@@ -17,7 +17,7 @@ const MenuSection = () => {
         {/* Heading */}
         <h2 className="text-2xl md:text-3xl font-semibold text-center text-brown-900 mb-8">
           Freshly Baked Goodness for Every{" "}
-          <span className="moment-tag inline-block px-3 py-1 rounded-md bg-black text-white font-bold shadow-md">
+          <span className="explore-pill inline-block px-3 py-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
             Moment
           </span>
         </h2>

@@ -110,7 +110,9 @@ export default function Testimonials() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#3A2525]">
             Sweet Words from Our{" "}
             <span className="inline-block align-middle">
-              <span className="clients-pill">Clients</span>
+              <span className="explore-pill inline-block px-3 py-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
+                Clients
+              </span>
             </span>
           </h2>
           <p className="mt-3 text-sm md:text-base text-[#6b4f47]">

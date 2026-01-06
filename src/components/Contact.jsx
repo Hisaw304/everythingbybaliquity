@@ -96,7 +96,10 @@ export default function Contact() {
         {/* Heading */}
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-extrabold text-[#3A2525]">
-            Let’s Bake Something <span className="together-pill">Together</span>
+            Let’s Bake Something{" "}
+            <span className="explore-pill inline-block px-3 py-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
+              Together
+            </span>
           </h2>
           <p className="mt-3 text-sm md:text-base text-[#6b4f47]">
             Got a craving, a custom request, or just want to say hello? Reach

@@ -30,7 +30,10 @@ export default function ContactPage() {
       <section className="py-24 px-6 text-center">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#3A2525] mb-6">
-            Get in <span className="together-pill">Touch</span>
+            Get in{" "}
+            <span className="explore-pill inline-block px-3 py-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
+              Touch
+            </span>
           </h1>
           <p className="mx-auto max-w-4xl text-lg md:text-xl text-[#6b4f47] leading-relaxed">
             Whether you’re planning a celebration, arranging catering, or simply

@@ -12,7 +12,11 @@ export default function About() {
       <section className="py-24 px-6 text-center">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
-            Baking <span className="pill-highlight">Memories</span> Since 2018
+            Baking{" "}
+            <span className="explore-pill inline-block px-3 py-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
+              Memories
+            </span>{" "}
+            Since 2018
           </h1>
           <p className="mx-auto max-w-4xl text-lg md:text-xl text-[#6b4f47] leading-relaxed">
             What started as a small oven and a big dream has grown into a place
@@ -51,7 +55,9 @@ export default function About() {
       <section className="py-20 px-6 bg-[#FCE9D2]">
         <div className="max-w-6xl mx-auto">
           <h2 className="section-heading text-center mb-10">
-            <span className="pill-highlight">Founder’s Note</span>
+            <span className="pill-highlight inline-block px-3 py-1 rounded-md font-semibold shadow-md">
+              Founder’s Note
+            </span>
           </h2>
 
           <div className="flex flex-col md:flex-row items-center gap-10">
@@ -123,7 +129,9 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
             Let’s Bake Something{" "}
-            <span className="pill-highlight">Together</span>
+            <span className="explore-pill inline-block px-3 py-1 rounded-md bg-[#FCE9D2] text-brown-900 font-semibold shadow-md">
+              Together
+            </span>
           </h2>
           <p className="mx-auto max-w-3xl text-lg md:text-xl text-[#6b4f47] leading-relaxed mb-10">
             Got a craving, a custom request, or simply want to say hello? Reach
